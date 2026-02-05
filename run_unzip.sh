@@ -10,7 +10,6 @@ echo "TGT renewal process started in background with PID $RENEW_PID"
 
 export HADOOP_HOME=/opt/cloudera/parcels/CDH
 export HADOOP_CONF_DIR=/etc/hadoop/conf
-export LD_LIBRARY_PATH=/opt/cloudera/parcels/CDH/lib64:$JAVA_HOME/lib/server:$LD_LIBRARY_PATH
 export CLASSPATH="$($HADOOP_HOME/bin/hadoop classpath)"
 
 spark3-submit \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-log_file=$(date +"%Y%m%d%H%M%S_unzip")
+log_file=$(date +"%Y%m%d%H%M%S_uzdist")
 workspace_path=/path_to_my_workspace...
 
 echo Kerberos Authentication

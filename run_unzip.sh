@@ -1,5 +1,9 @@
 #!/bin/bash
 
+ZIPID="$1"
+zip_hdfs_path="$2"
+output_hdfs_path="$3"
+
 log_file=$(date +"%Y%m%d%H%M%S_uzdist")
 workspace_path=/path_to_my_workspace...
 
@@ -13,7 +17,11 @@ export HADOOP_CONF_DIR=/etc/hadoop/conf
 export CLASSPATH="$($HADOOP_HOME/bin/hadoop classpath)"
 
 spark3-submit \
-  $workspace_path/jobs/unzip_split.py 2>&1 | tee $workspace_path/logs/$log_file.log
+  $workspace_path/jobs/unzip_split.py \
+  "$ZIPID" \
+  "$zip_hdfs_path" \
+  "$output_hdfs_path" \
+  2>&1 | tee $workspace_path/logs/$log_file.log
 
 exit_code=${PIPESTATUS[0]}
 

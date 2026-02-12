@@ -1,15 +1,20 @@
+import sys
 from pyspark.sql import SparkSession
 import zipfile
 from pyarrow import fs
 
+# --- Read parameters --- 
+ZIPID = sys.argv[1]
+zip_hdfs_path = sys.argv[2]
+output_hdfs_path = sys.argv[3]
+
+app_name = f"APP_{ZIPID}_DistributedUnzip"
+
 spark = SparkSession.builder \
-    .appName("APP_DistributedUnzip") \
+    .appName(app_name) \
     .getOrCreate()
 
 sc = spark.sparkContext
-
-zip_hdfs_path = "/path_to_my_zip_file.zip"
-output_dir = "/path_to_my_output_directory"
 
 # ============================================================
 # 1. HDFS connection via PyArrow (Python-like files)
@@ -63,7 +68,7 @@ def extract_streaming(filename):
         # Internal file stream (unpacked on the fly)
         with z.open(filename) as infile:
 
-            target_path = output_dir + "/" + filename
+            target_path = output_hdfs_path + "/" + filename
 
             # Open HDFS output
             with hdfs.open_output_stream(target_path) as out:

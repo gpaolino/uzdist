@@ -1,5 +1,6 @@
 # uzdist
-PySpark distributed unzip on cluster CDP
+PySpark distributed unzip on cluster CDP <br/>
+<img width="384" height="256" alt="uzdist_logo" src="https://github.com/user-attachments/assets/1cbac238-65d7-4994-9f10-139f0e30a518" />
 
 ## Requirements
 
